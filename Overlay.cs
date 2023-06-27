@@ -8,9 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 using VisioForge.Libs.NAudio.CoreAudioApi;
-using VisioForge.Shared.NAudio.CoreAudioApi;
 
 namespace Sonas_Pictura
 {
@@ -41,7 +41,7 @@ namespace Sonas_Pictura
 
             if (device.AudioMeterInformation.PeakValues.Count < 8)
             {
-                MessageBox.Show("A 7.1 audio device required. Review setup guide again please.", "Error! No 7.1 audio detected!", MessageBoxButton.OK, MessageBoxImage.Error);
+                System.Windows.MessageBox.Show("A 7.1 audio device required. Review setup guide again please.", "Error! No 7.1 audio detected!", MessageBoxButton.OK, MessageBoxImage.Error);
                 Environment.Exit(-1);
             }
 
@@ -55,7 +55,7 @@ namespace Sonas_Pictura
                 float rightBckCh = device.AudioMeterInformation.PeakValues[5] * multiplier;
                 float frontCh = device.AudioMeterInformation.PeakValues[2] * multiplier;
 
-                RunOverlay(leftCh, rightCh, leftFrCh, rightFrCh, leftBckCh, rightBckCh, frontCh));
+                RunOverlay(leftCh, rightCh, leftFrCh, rightFrCh, leftBckCh, rightBckCh, frontCh);
 
                 Thread.Sleep(10);
             }

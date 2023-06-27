@@ -12,7 +12,9 @@ namespace Sonas_Pictura
 
         private void btn1_Click(object sender, EventArgs e)
         {
-            // Open Overlay
+            Overlay o = new Overlay();
+            o.Show();
+            this.Close();
         }
         private void btn2_Click(object sender, EventArgs e)
         {
