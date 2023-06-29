@@ -64,7 +64,7 @@ namespace Sonas_Pictura
         {
             Bitmap radar = new Bitmap(205, 205);
             SolidBrush radarBrush = new SolidBrush(Color.Red);
-            Settings s = new Settings();
+            User s = new User();
 
             Graphics frontLeft = Graphics.FromImage(radar);
             Graphics frontRight = Graphics.FromImage(radar);
@@ -139,6 +139,7 @@ namespace Sonas_Pictura
         }
         public void DrawHexagon( Bitmap map)
         {
+            User u = new User();
             Point[] hexPoints = new Point[7];
             hexPoints[0] = new Point(100,3);
             hexPoints[1] = new Point(200, 50);
@@ -151,6 +152,13 @@ namespace Sonas_Pictura
             Graphics hex = Graphics.FromImage(map);
             Pen pen = new Pen(Brushes.Black, 3);
             hex.DrawPolygon(pen, hexPoints);
+            bool x = u.RadarLines;
+            if (x == true)
+                    {
+                hex.DrawLine(pen, new Point(100, 3), new Point(100, 200));
+                hex.DrawLine(pen, new Point(3, 50), new Point(200, 150));
+                hex.DrawLine(pen, new Point(200, 50), new Point(3, 150)); 
+            }
 
         }
 
