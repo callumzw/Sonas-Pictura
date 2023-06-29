@@ -30,6 +30,7 @@ namespace Sonas_Pictura
         /// </summary>
         private void InitializeComponent()
         {
+            User u = new User();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -38,12 +39,12 @@ namespace Sonas_Pictura
             // 
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Location = new System.Drawing.Point(890, 710);
-            this.pictureBox1.Size = new System.Drawing.Size(205, 205);;
+            this.pictureBox1.Size = new System.Drawing.Size(u.radarSize + 10, u.radarSize + 10);;
             // 
             // Overlay
             // 
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.ClientSize = new System.Drawing.Size(205, 205);
+            this.ClientSize = new System.Drawing.Size(u.radarSize + 10, u.radarSize + 10);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle =FormBorderStyle.None;
             this.MaximizeBox = false;

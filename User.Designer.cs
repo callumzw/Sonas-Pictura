@@ -58,5 +58,17 @@ namespace Sonas_Pictura {
                 this["opacity"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("150")]
+        public int radarSize {
+            get {
+                return ((int)(this["radarSize"]));
+            }
+            set {
+                this["radarSize"] = value;
+            }
+        }
     }
 }
