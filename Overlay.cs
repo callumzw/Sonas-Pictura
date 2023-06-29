@@ -62,7 +62,7 @@ namespace Sonas_Pictura
         public void RunOverlay(double l, double r, double fl, double fr, double bl, double br, double f)
         {
             User u = new User();
-            Bitmap radar = new Bitmap(u.radarSize + 10, u.radarSize + 10);
+            Bitmap radar = new Bitmap(u.radarSize + 5, u.radarSize + 5);
             SolidBrush radarBrush = new SolidBrush(u.radarCol);
             int size75 = (int)(u.radarSize * 0.75);
             int size50 = u.radarSize / 2;

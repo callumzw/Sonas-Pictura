@@ -38,13 +38,13 @@ namespace Sonas_Pictura
             // pictureBox1
             // 
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Location = new System.Drawing.Point(890, 710);
-            this.pictureBox1.Size = new System.Drawing.Size(u.radarSize + 10, u.radarSize + 10);;
+            this.pictureBox1.Location = new System.Drawing.Point(960 - (u.radarSize /2 ), 810 - (u.radarSize / 2));
+            this.pictureBox1.Size = new System.Drawing.Size(u.radarSize + 5, u.radarSize + 5);;
             // 
             // Overlay
             // 
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.ClientSize = new System.Drawing.Size(u.radarSize + 10, u.radarSize + 10);
+            this.ClientSize = new System.Drawing.Size(u.radarSize + 5, u.radarSize + 5);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle =FormBorderStyle.None;
             this.MaximizeBox = false;
