@@ -62,13 +62,12 @@ namespace Sonas_Pictura
         }
         public void RunOverlay(double l, double r, double fl, double fr, double bl, double br, double f)
         {
-            Bitmap radar = new Bitmap(150, 150);
-            Graphics graph = Graphics.FromImage(radar);
+            Bitmap radar = new Bitmap(205, 205);
+            DrawHexagon(radar);
             SolidBrush radarBrush = new SolidBrush(Color.Red);
-            graph.FillPolygon(Brushes.LightGray, new Point[] { new Point(150, 100), new Point(100, 150), new Point(150, 150) });
-
+            Graphics frontLeft = Graphics.FromImage(radar);
             Settings s = new Settings();
-            string radarColour; //= s.RadarCol;
+
             // Left Indicator
             if (l >= 5)
             {
@@ -94,11 +93,12 @@ namespace Sonas_Pictura
             // Front Left Indicator
             if (fl >= 5 | f >= 5)
             {
-                pictureBox1.Image = radar;
+                frontLeft.FillPolygon(radarBrush, new Point[] { new Point(100, 0), new Point(100, 100), new Point(0, 50) });
                 //topLeftFill.Color = (Color)ColorConverter.ConvertFromString(radarColour);
             }
             else
             {
+                frontLeft = null;
                 // topLeftFill.Color = (Color)ColorConverter.ConvertFromString("Transparent");
                 // topLeftFill.Opacity = s.RadarOpacity;
             }
@@ -134,6 +134,29 @@ namespace Sonas_Pictura
                 //downRightFill.Color = (Color)ColorConverter.ConvertFromString("Transparent");
                 //downRightFill.Opacity = s.RadarOpacity;
             }
+
+            pictureBox1.Image = radar;
+        }
+        public void DrawHexagon( Bitmap map)
+        {
+            Point[] hexPoints = new Point[7];
+            hexPoints[0] = new Point(100,3);
+            hexPoints[1] = new Point(200, 50);
+            hexPoints[2] = new Point(200, 150);
+            hexPoints[3] = new Point(100, 200);
+            hexPoints[4] = new Point(3, 150);
+            hexPoints[5] = new Point(3, 50);
+            hexPoints[6] = new Point(100, 3);
+
+            Graphics hex = Graphics.FromImage(map);
+            Pen pen = new Pen(Brushes.Black, 3);
+            hex.DrawPolygon(pen, hexPoints);
+            hex.DrawLine(pen, new Point(100,3), new Point(100,200));
+            hex.DrawLine(pen, new Point(3, 50), new Point(200, 150));
+            hex.DrawLine(pen, new Point(200, 50), new Point(3, 150));
+
+
+
         }
 
 

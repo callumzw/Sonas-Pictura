@@ -1,4 +1,6 @@
-﻿namespace Sonas_Pictura
+﻿using System.Windows.Forms;
+
+namespace Sonas_Pictura
 {
     partial class Overlay
     {
@@ -34,25 +36,20 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.pictureBox1.Location = new System.Drawing.Point(320, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(150, 150);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Location = new System.Drawing.Point(890, 710);
+            this.pictureBox1.Size = new System.Drawing.Size(205, 205);;
             // 
             // Overlay
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.ClientSize = new System.Drawing.Size(205, 205);
             this.Controls.Add(this.pictureBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle =FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Overlay";
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sonus Overlay";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Overlay_Load);

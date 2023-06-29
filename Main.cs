@@ -14,7 +14,7 @@ namespace Sonas_Pictura
         {
             Overlay o = new Overlay();
             o.Show();
-            this.Close();
+            this.Hide();
         }
         private void btn2_Click(object sender, EventArgs e)
         {
