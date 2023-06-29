@@ -63,79 +63,79 @@ namespace Sonas_Pictura
         public void RunOverlay(double l, double r, double fl, double fr, double bl, double br, double f)
         {
             Bitmap radar = new Bitmap(205, 205);
-            DrawHexagon(radar);
             SolidBrush radarBrush = new SolidBrush(Color.Red);
-            Graphics frontLeft = Graphics.FromImage(radar);
             Settings s = new Settings();
+
+            Graphics frontLeft = Graphics.FromImage(radar);
+            Graphics frontRight = Graphics.FromImage(radar);
+            Graphics left = Graphics.FromImage(radar);
+            Graphics right = Graphics.FromImage(radar);
+            Graphics backLeft = Graphics.FromImage(radar);
+            Graphics backRight = Graphics.FromImage(radar);
 
             // Left Indicator
             if (l >= 5)
             {
-                //leftFill.Color = (Color)ColorConverter.ConvertFromString(radarColour);
+                left.FillPolygon(radarBrush, new Point[] { new Point(2, 50), new Point(100, 100), new Point(2, 150) });
             }
             else
             {
-                // leftFill.Color = (Color)ColorConverter.ConvertFromString("Transparent");
-                //leftFill.Opacity = s.RadarOpacity;
+                left = null;
             }
 
             // Right Indicator
             if (r >= 5)
             {
-                // rightFill.Color = (Color)ColorConverter.ConvertFromString(radarColour);
+                right.FillPolygon(radarBrush, new Point[] { new Point(200, 50), new Point(100, 100), new Point(200, 150) });
             }
             else
             {
-                // rightFill.Color = (Color)ColorConverter.ConvertFromString("Transparent");
-                // rightFill.Opacity = s.RadarOpacity;
+                right = null;
             }
 
             // Front Left Indicator
             if (fl >= 5 | f >= 5)
             {
-                frontLeft.FillPolygon(radarBrush, new Point[] { new Point(100, 0), new Point(100, 100), new Point(0, 50) });
-                //topLeftFill.Color = (Color)ColorConverter.ConvertFromString(radarColour);
+                frontLeft.FillPolygon(radarBrush, new Point[] { new Point(2, 50), new Point(100, 100), new Point(100, 2) });
             }
             else
             {
                 frontLeft = null;
-                // topLeftFill.Color = (Color)ColorConverter.ConvertFromString("Transparent");
-                // topLeftFill.Opacity = s.RadarOpacity;
             }
 
             // Front Right Indicator
             if (fr >= 5 | f >= 5)
             {
-                //topRightFill.Color = (Color)ColorConverter.ConvertFromString(radarColour);
+                frontRight.FillPolygon(radarBrush, new Point[] { new Point(100, 2), new Point(100, 100), new Point(200, 50) });
             }
             else
             {
-                //topRightFill.Color = (Color)ColorConverter.ConvertFromString("Transparent");
-                //topRightFill.Opacity = s.RadarOpacity;
+                frontRight = null;  
             }
 
             // Back left Indicator
             if (bl >= 5)
             {
-                // downLeftFill.Color = (Color)ColorConverter.ConvertFromString(radarColour);
+                backLeft.FillPolygon(radarBrush, new Point[] { new Point(2, 150), new Point(100, 100), new Point(100, 200) });
             }
             else
             {
-                //downLeftFill.Color = (Color)ColorConverter.ConvertFromString("Transparent");
+                backLeft = null;
             }
 
             // Back right Indicator
             if (br >= 5)
             {
-                //downRightFill.Color = (Color)ColorConverter.ConvertFromString(radarColour);
+                backRight.FillPolygon(radarBrush, new Point[] { new Point(100, 200), new Point(100, 100), new Point(200, 150) });
             }
             else
             {
-                //downRightFill.Color = (Color)ColorConverter.ConvertFromString("Transparent");
-                //downRightFill.Opacity = s.RadarOpacity;
+                backRight = null;
             }
 
             pictureBox1.Image = radar;
+            DrawHexagon(radar);
+
         }
         public void DrawHexagon( Bitmap map)
         {
@@ -151,11 +151,6 @@ namespace Sonas_Pictura
             Graphics hex = Graphics.FromImage(map);
             Pen pen = new Pen(Brushes.Black, 3);
             hex.DrawPolygon(pen, hexPoints);
-            hex.DrawLine(pen, new Point(100,3), new Point(100,200));
-            hex.DrawLine(pen, new Point(3, 50), new Point(200, 150));
-            hex.DrawLine(pen, new Point(200, 50), new Point(3, 150));
-
-
 
         }
 
