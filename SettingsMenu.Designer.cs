@@ -1,4 +1,7 @@
-﻿namespace Sonas_Pictura
+﻿using GLib;
+using System.Windows.Forms;
+
+namespace Sonas_Pictura
 {
     partial class SettingsMenu
     {
@@ -28,86 +31,133 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Settings Menu";
             this.groupBox = new System.Windows.Forms.GroupBox();
+            this.input1 = new System.Windows.Forms.TextBox();
+            this.text1 = new System.Windows.Forms.RichTextBox();
+            this.input2 = new System.Windows.Forms.TextBox();
+            this.text2 = new System.Windows.Forms.RichTextBox();
+            this.input3 = new System.Windows.Forms.TextBox();
+            this.input4 = new System.Windows.Forms.TextBox();
             this.btn1 = new System.Windows.Forms.Button();
-            this.btn2 = new System.Windows.Forms.Button();
-            this.btn3 = new System.Windows.Forms.Button();
-            this.btn4 = new System.Windows.Forms.Button();
             this.groupBox.SuspendLayout();
             this.SuspendLayout();
-
-            this.groupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            // 
+            // groupBox
+            // 
+            this.groupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox.Controls.Add(this.input1);
+            this.groupBox.Controls.Add(this.text1);
+            this.groupBox.Controls.Add(this.input2);
+            this.groupBox.Controls.Add(this.text2);
+            this.groupBox.Controls.Add(this.input3);
+            this.groupBox.Controls.Add(this.input4);
             this.groupBox.Controls.Add(this.btn1);
-            this.groupBox.Controls.Add(this.btn2);
-            this.groupBox.Controls.Add(this.btn3);
-            this.groupBox.Controls.Add(this.btn4);
             this.groupBox.Location = new System.Drawing.Point(20, 2);
             this.groupBox.Name = "groupBox";
-            this.groupBox.Size = new System.Drawing.Size(250, 250);
-            this.groupBox.TabIndex = 1;
+            this.groupBox.Size = new System.Drawing.Size(383, 250);
+            this.groupBox.TabIndex = 0;
             this.groupBox.TabStop = false;
-
-            this.btn1.Location = new System.Drawing.Point(66, 20);
+            // 
+            // input1
+            // 
+            this.input1.Location = new System.Drawing.Point(239, 19);
+            this.input1.Name = "input1";
+            this.input1.Size = new System.Drawing.Size(100, 20);
+            this.input1.TabIndex = 0;
+            this.input1.Text = "150";
+            this.input1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.input1.Click += new System.EventHandler(this.btn1_Click);
+            this.input1.TextChanged += new System.EventHandler(this.input1_TextChanged);
+            // 
+            // text1
+            // 
+            this.text1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.text1.Location = new System.Drawing.Point(3, 16);
+            this.text1.Name = "text1";
+            this.text1.ReadOnly = true;
+            this.text1.Size = new System.Drawing.Size(200, 20);
+            this.text1.TabIndex = 1;
+            this.text1.Text = "Size of Overlay radar (in bits)";
+            // 
+            // input2
+            // 
+            this.input2.Location = new System.Drawing.Point(239, 55);
+            this.input2.Name = "input2";
+            this.input2.Size = new System.Drawing.Size(100, 20);
+            this.input2.TabIndex = 1;
+            this.input2.Text = "Red";
+            this.input2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.input2.Click += new System.EventHandler(this.btn2_Click);
+            this.input2.TextChanged += new System.EventHandler(this.input2_TextChanged);
+            // 
+            // text2
+            // 
+            this.text2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.text2.Location = new System.Drawing.Point(3, 55);
+            this.text2.Name = "text2";
+            this.text2.ReadOnly = true;
+            this.text2.Size = new System.Drawing.Size(221, 20);
+            this.text2.TabIndex = 1;
+            this.text2.Text = "Colour of Overlay radar (in name of Colour)";
+            // 
+            // input3
+            // 
+            this.input3.Location = new System.Drawing.Point(239, 95);
+            this.input3.Name = "input3";
+            this.input3.Size = new System.Drawing.Size(100, 20);
+            this.input3.TabIndex = 2;
+            this.input3.Text = "0.5";
+            this.input3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.input3.Click += new System.EventHandler(this.btn3_Click);
+            this.input3.TextChanged += new System.EventHandler(this.input3_TextChanged);
+            // 
+            // input4
+            // 
+            this.input4.Location = new System.Drawing.Point(239, 134);
+            this.input4.Name = "input4";
+            this.input4.Size = new System.Drawing.Size(100, 20);
+            this.input4.TabIndex = 1;
+            this.input4.Text = "False";
+            this.input4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.input4.Click += new System.EventHandler(this.btn4_Click);
+            this.input4.TextChanged += new System.EventHandler(this.input4_TextChanged);
+            // 
+            // btn1
+            // 
+            this.btn1.Location = new System.Drawing.Point(144, 210);
             this.btn1.Name = "btn1";
-            this.btn1.Size = new System.Drawing.Size(100, 40);
-            this.btn1.TabIndex = 0;
-            this.btn1.Text = "Radar Size";
-            this.btn1.UseVisualStyleBackColor = true;
-            this.btn1.Click += new System.EventHandler(this.btn1_Click);
+            this.btn1.Size = new System.Drawing.Size(100, 20);
+            this.btn1.TabIndex = 1;
+            this.btn1.Text = "Save";
+            this.btn1.TextChanged += new System.EventHandler(this.input4_TextChanged);
+            this.btn1.Click += new System.EventHandler(this.btn4_Click);
             // 
-            // btn2
+            // SettingsMenu
             // 
-            this.btn2.Location = new System.Drawing.Point(66, 80);
-            this.btn2.Name = "btn2";
-            this.btn2.Size = new System.Drawing.Size(100, 40);
-            this.btn2.TabIndex = 1;
-            this.btn2.Text = "Radar Colour";
-            this.btn2.UseVisualStyleBackColor = true;
-            this.btn2.Click += new System.EventHandler(this.btn2_Click);
-            // 
-            // btn3
-            // 
-            this.btn3.Location = new System.Drawing.Point(66, 140);
-            this.btn3.Name = "btn3";
-            this.btn3.Size = new System.Drawing.Size(100, 40);
-            this.btn3.TabIndex = 2;
-            this.btn3.Text = "Opacity Level";
-            this.btn3.UseVisualStyleBackColor = true;
-            this.btn3.Click += new System.EventHandler(this.btn3_Click);
-            // 
-            // btn4
-            // 
-            this.btn4.Location = new System.Drawing.Point(66, 200);
-            this.btn4.Name = "btn4";
-            this.btn4.Size = new System.Drawing.Size(100, 40);
-            this.btn4.TabIndex = 1;
-            this.btn4.Text = "Radar Design";
-            this.btn4.UseVisualStyleBackColor = true;
-            this.btn4.Click += new System.EventHandler(this.btn4_Click);
-
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(280, 269);
+            this.ClientSize = new System.Drawing.Size(413, 269);
             this.Controls.Add(this.groupBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "Main";
+            this.Name = "SettingsMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sonus Pictura";
             this.groupBox.ResumeLayout(false);
+            this.groupBox.PerformLayout();
             this.ResumeLayout(false);
+
         }
 
         #endregion
         private System.Windows.Forms.GroupBox groupBox;
+        private System.Windows.Forms.TextBox input1;
+        private System.Windows.Forms.RichTextBox text1;
+        private System.Windows.Forms.TextBox input2;
+        private System.Windows.Forms.RichTextBox text2;
+        private System.Windows.Forms.TextBox input3;
+        private System.Windows.Forms.TextBox input4;
         private System.Windows.Forms.Button btn1;
-        private System.Windows.Forms.Button btn2;
-        private System.Windows.Forms.Button btn3;
-        private System.Windows.Forms.Button btn4;
     }
 }

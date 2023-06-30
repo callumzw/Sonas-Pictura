@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VisioForge.Libs.DirectShowLib;
 
 namespace Sonas_Pictura
 {
     public partial class SettingsMenu : Form
     {
+        User u = new User();
         public SettingsMenu()
         {
             InitializeComponent();
@@ -37,6 +39,27 @@ namespace Sonas_Pictura
             MessageBox.Show("Sonus Pictura", "This application requires 7.1 audio in order to properly operate the 360 directional display." +
                 "This can be done by accesing your audio driver settings and selecting 7.1/Surround-Sound audio." +
                 "If 7.1 audio is not avaible, 3rd party programs such as Rzaer Sound are recommended.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void input1_TextChanged(object sender, EventArgs e)
+        { 
+            u.radarSize = Int32.Parse(Text);
+        }
+
+        private void input2_TextChanged(object sender, EventArgs e)
+        {
+            u.radarCol = ColorTranslator.FromHtml(Text);
+
+        }
+
+        private void input3_TextChanged(object sender, EventArgs e)
+        {
+            u.opacity = Double.Parse(Text);
+        }
+
+        private void input4_TextChanged(object sender, EventArgs e)
+        {
+            u.RadarLines = bool.Parse(Text);
         }
     }
 }
