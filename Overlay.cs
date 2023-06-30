@@ -18,18 +18,18 @@ namespace Sonas_Pictura
     {
         MMDeviceEnumerator enumerator;
         MMDevice device;
-        int multiplier = 100;
         public Overlay()
         {
             InitializeComponent();
         }
         private void Overlay_Load(object sender, EventArgs e)
         {
+            User u = new User();
             this.TransparencyKey = Color.White;
             this.BackColor = Color.White;
 
             this.WindowState = FormWindowState.Maximized;
-            this.Opacity = 0.5;
+            this.Opacity = u.opacity;
             Thread t = new Thread(AudioReader);
             t.Start();
         }
@@ -37,7 +37,6 @@ namespace Sonas_Pictura
         {
             enumerator = new MMDeviceEnumerator();
             device = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Console);
-            int multiplier = 100;
 
             if (device.AudioMeterInformation.PeakValues.Count < 8)
             {
@@ -47,13 +46,13 @@ namespace Sonas_Pictura
 
             while (true)
             {
-                float leftCh = device.AudioMeterInformation.PeakValues[6] * multiplier;
-                float rightCh = device.AudioMeterInformation.PeakValues[7] * multiplier;
-                float leftFrCh = device.AudioMeterInformation.PeakValues[0] * multiplier;
-                float rightFrCh = device.AudioMeterInformation.PeakValues[1] * multiplier;
-                float leftBckCh = device.AudioMeterInformation.PeakValues[4] * multiplier;
-                float rightBckCh = device.AudioMeterInformation.PeakValues[5] * multiplier;
-                float frontCh = device.AudioMeterInformation.PeakValues[2] * multiplier;
+                float leftCh = device.AudioMeterInformation.PeakValues[6] * 100;
+                float rightCh = device.AudioMeterInformation.PeakValues[7] * 100;
+                float leftFrCh = device.AudioMeterInformation.PeakValues[0] * 100;
+                float rightFrCh = device.AudioMeterInformation.PeakValues[1] * 100;
+                float leftBckCh = device.AudioMeterInformation.PeakValues[4] * 100;
+                float rightBckCh = device.AudioMeterInformation.PeakValues[5] * 100;
+                float frontCh = device.AudioMeterInformation.PeakValues[2] * 100;
 
                 RunOverlay(leftCh, rightCh, leftFrCh, rightFrCh, leftBckCh, rightBckCh, frontCh);
 
@@ -62,9 +61,12 @@ namespace Sonas_Pictura
         }
         public void RunOverlay(double l, double r, double fl, double fr, double bl, double br, double f)
         {
-            Bitmap radar = new Bitmap(205, 205);
-            SolidBrush radarBrush = new SolidBrush(Color.Red);
-            Settings s = new Settings();
+            User u = new User();
+            Bitmap radar = new Bitmap(u.radarSize + 5, u.radarSize + 5);
+            SolidBrush radarBrush = new SolidBrush(u.radarCol);
+            int size75 = (int)(u.radarSize * 0.75);
+            int size50 = u.radarSize / 2;
+            int size25 = (int)(u.radarSize * 0.25);
 
             Graphics frontLeft = Graphics.FromImage(radar);
             Graphics frontRight = Graphics.FromImage(radar);
@@ -76,7 +78,7 @@ namespace Sonas_Pictura
             // Left Indicator
             if (l >= 5)
             {
-                left.FillPolygon(radarBrush, new Point[] { new Point(2, 50), new Point(100, 100), new Point(2, 150) });
+                left.FillPolygon(radarBrush, new Point[] { new Point(2, size25), new Point(size50, size50), new Point(2, size75) });
             }
             else
             {
@@ -86,7 +88,7 @@ namespace Sonas_Pictura
             // Right Indicator
             if (r >= 5)
             {
-                right.FillPolygon(radarBrush, new Point[] { new Point(200, 50), new Point(100, 100), new Point(200, 150) });
+                right.FillPolygon(radarBrush, new Point[] { new Point(u.radarSize, size25), new Point(size50, size50), new Point(u.radarSize, size75) });
             }
             else
             {
@@ -96,7 +98,7 @@ namespace Sonas_Pictura
             // Front Left Indicator
             if (fl >= 5 | f >= 5)
             {
-                frontLeft.FillPolygon(radarBrush, new Point[] { new Point(2, 50), new Point(100, 100), new Point(100, 2) });
+                frontLeft.FillPolygon(radarBrush, new Point[] { new Point(2, size25), new Point(size50, size50), new Point(size50, 2) });
             }
             else
             {
@@ -106,7 +108,7 @@ namespace Sonas_Pictura
             // Front Right Indicator
             if (fr >= 5 | f >= 5)
             {
-                frontRight.FillPolygon(radarBrush, new Point[] { new Point(100, 2), new Point(100, 100), new Point(200, 50) });
+                frontRight.FillPolygon(radarBrush, new Point[] { new Point(size50, 2), new Point(size50, size50), new Point(u.radarSize, size25) });
             }
             else
             {
@@ -116,7 +118,7 @@ namespace Sonas_Pictura
             // Back left Indicator
             if (bl >= 5)
             {
-                backLeft.FillPolygon(radarBrush, new Point[] { new Point(2, 150), new Point(100, 100), new Point(100, 200) });
+                backLeft.FillPolygon(radarBrush, new Point[] { new Point(2, size75), new Point(size50, size50), new Point(size50, u.radarSize) });
             }
             else
             {
@@ -126,31 +128,43 @@ namespace Sonas_Pictura
             // Back right Indicator
             if (br >= 5)
             {
-                backRight.FillPolygon(radarBrush, new Point[] { new Point(100, 200), new Point(100, 100), new Point(200, 150) });
+                backRight.FillPolygon(radarBrush, new Point[] { new Point(size50, u.radarSize), new Point(size50, size50), new Point(u.radarSize, size75) });
             }
             else
             {
                 backRight = null;
             }
-
-            pictureBox1.Image = radar;
             DrawHexagon(radar);
+            pictureBox1.Image = radar;
+            
 
         }
         public void DrawHexagon( Bitmap map)
         {
+            User u = new User();
+            int size75 = (int)(u.radarSize * 0.75);
+            int size50 = u.radarSize / 2;
+            int size25 = (int)(u.radarSize * 0.25);
+
             Point[] hexPoints = new Point[7];
-            hexPoints[0] = new Point(100,3);
-            hexPoints[1] = new Point(200, 50);
-            hexPoints[2] = new Point(200, 150);
-            hexPoints[3] = new Point(100, 200);
-            hexPoints[4] = new Point(3, 150);
-            hexPoints[5] = new Point(3, 50);
-            hexPoints[6] = new Point(100, 3);
+            hexPoints[0] = new Point(size50,3);
+            hexPoints[1] = new Point(u.radarSize, size25);
+            hexPoints[2] = new Point(u.radarSize, size75);
+            hexPoints[3] = new Point(size50, u.radarSize);
+            hexPoints[4] = new Point(3, size75);
+            hexPoints[5] = new Point(3, size25);
+            hexPoints[6] = new Point(size50, 3);
 
             Graphics hex = Graphics.FromImage(map);
             Pen pen = new Pen(Brushes.Black, 3);
             hex.DrawPolygon(pen, hexPoints);
+            bool x = u.RadarLines;
+            if (x == true)
+                    {
+                hex.DrawLine(pen, new Point(size50, 3), new Point(size50, u.radarSize));
+                hex.DrawLine(pen, new Point(3, size25), new Point(u.radarSize, size75));
+                hex.DrawLine(pen, new Point(u.radarSize, size25), new Point(3, size75)); 
+            }
 
         }
 

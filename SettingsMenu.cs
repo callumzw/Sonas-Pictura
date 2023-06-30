@@ -1,11 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Sonas_Pictura
 {
-    public partial class Main : Form
+    public partial class SettingsMenu : Form
     {
-        public Main()
+        public SettingsMenu()
         {
             InitializeComponent();
         }
@@ -23,9 +30,7 @@ namespace Sonas_Pictura
         }
         private void btn3_Click(object sender, EventArgs e)
         {
-           SettingsMenu settingsMenu = new SettingsMenu();
-            settingsMenu.Show();
-            this.Hide();
+            //Open Settings
         }
         private void btn4_Click(object sender, EventArgs e)
         {
@@ -33,6 +38,5 @@ namespace Sonas_Pictura
                 "This can be done by accesing your audio driver settings and selecting 7.1/Surround-Sound audio." +
                 "If 7.1 audio is not avaible, 3rd party programs such as Rzaer Sound are recommended.", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-    
     }
 }

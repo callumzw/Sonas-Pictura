@@ -1,6 +1,6 @@
 ﻿namespace Sonas_Pictura
 {
-    partial class Main
+    partial class SettingsMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Text = "Settings Menu";
             this.groupBox = new System.Windows.Forms.GroupBox();
             this.btn1 = new System.Windows.Forms.Button();
             this.btn2 = new System.Windows.Forms.Button();
@@ -35,10 +39,8 @@
             this.btn4 = new System.Windows.Forms.Button();
             this.groupBox.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // groupBox
-            // 
-            this.groupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+
+            this.groupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox.Controls.Add(this.btn1);
             this.groupBox.Controls.Add(this.btn2);
@@ -49,14 +51,12 @@
             this.groupBox.Size = new System.Drawing.Size(250, 250);
             this.groupBox.TabIndex = 1;
             this.groupBox.TabStop = false;
-            // 
-            // btn1
-            // 
+
             this.btn1.Location = new System.Drawing.Point(66, 20);
             this.btn1.Name = "btn1";
             this.btn1.Size = new System.Drawing.Size(100, 40);
             this.btn1.TabIndex = 0;
-            this.btn1.Text = "Deploy";
+            this.btn1.Text = "Radar Size";
             this.btn1.UseVisualStyleBackColor = true;
             this.btn1.Click += new System.EventHandler(this.btn1_Click);
             // 
@@ -66,7 +66,7 @@
             this.btn2.Name = "btn2";
             this.btn2.Size = new System.Drawing.Size(100, 40);
             this.btn2.TabIndex = 1;
-            this.btn2.Text = "About";
+            this.btn2.Text = "Radar Colour";
             this.btn2.UseVisualStyleBackColor = true;
             this.btn2.Click += new System.EventHandler(this.btn2_Click);
             // 
@@ -76,7 +76,7 @@
             this.btn3.Name = "btn3";
             this.btn3.Size = new System.Drawing.Size(100, 40);
             this.btn3.TabIndex = 2;
-            this.btn3.Text = "Settings";
+            this.btn3.Text = "Opacity Level";
             this.btn3.UseVisualStyleBackColor = true;
             this.btn3.Click += new System.EventHandler(this.btn3_Click);
             // 
@@ -86,12 +86,10 @@
             this.btn4.Name = "btn4";
             this.btn4.Size = new System.Drawing.Size(100, 40);
             this.btn4.TabIndex = 1;
-            this.btn4.Text = "Guide";
+            this.btn4.Text = "Radar Design";
             this.btn4.UseVisualStyleBackColor = true;
             this.btn4.Click += new System.EventHandler(this.btn4_Click);
-            // 
-            // Main
-            // 
+
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(280, 269);
@@ -103,7 +101,6 @@
             this.Text = "Sonus Pictura";
             this.groupBox.ResumeLayout(false);
             this.ResumeLayout(false);
-
         }
 
         #endregion
@@ -112,8 +109,5 @@
         private System.Windows.Forms.Button btn2;
         private System.Windows.Forms.Button btn3;
         private System.Windows.Forms.Button btn4;
-
-
     }
 }
-
