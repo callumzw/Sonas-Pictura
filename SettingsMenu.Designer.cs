@@ -32,6 +32,7 @@ namespace Sonas_Pictura
         private void InitializeComponent()
         {
             this.groupBox = new System.Windows.Forms.GroupBox();
+            this.text3 = new System.Windows.Forms.RichTextBox();
             this.input1 = new System.Windows.Forms.TextBox();
             this.text1 = new System.Windows.Forms.RichTextBox();
             this.input2 = new System.Windows.Forms.TextBox();
@@ -39,6 +40,7 @@ namespace Sonas_Pictura
             this.input3 = new System.Windows.Forms.TextBox();
             this.input4 = new System.Windows.Forms.TextBox();
             this.btn1 = new System.Windows.Forms.Button();
+            this.text4 = new System.Windows.Forms.RichTextBox();
             this.groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,6 +48,8 @@ namespace Sonas_Pictura
             // 
             this.groupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox.Controls.Add(this.text4);
+            this.groupBox.Controls.Add(this.text3);
             this.groupBox.Controls.Add(this.input1);
             this.groupBox.Controls.Add(this.text1);
             this.groupBox.Controls.Add(this.input2);
@@ -59,6 +63,16 @@ namespace Sonas_Pictura
             this.groupBox.TabIndex = 0;
             this.groupBox.TabStop = false;
             // 
+            // text3
+            // 
+            this.text3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.text3.Location = new System.Drawing.Point(6, 95);
+            this.text3.Name = "text3";
+            this.text3.ReadOnly = true;
+            this.text3.Size = new System.Drawing.Size(221, 20);
+            this.text3.TabIndex = 3;
+            this.text3.Text = "Opacity of Overlay (in percentage)";
+            // 
             // input1
             // 
             this.input1.Location = new System.Drawing.Point(239, 19);
@@ -68,7 +82,6 @@ namespace Sonas_Pictura
             this.input1.Text = "150";
             this.input1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.input1.Click += new System.EventHandler(this.btn1_Click);
-            this.input1.TextChanged += new System.EventHandler(this.input1_TextChanged);
             // 
             // text1
             // 
@@ -88,8 +101,6 @@ namespace Sonas_Pictura
             this.input2.TabIndex = 1;
             this.input2.Text = "Red";
             this.input2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.input2.Click += new System.EventHandler(this.btn2_Click);
-            this.input2.TextChanged += new System.EventHandler(this.input2_TextChanged);
             // 
             // text2
             // 
@@ -109,8 +120,6 @@ namespace Sonas_Pictura
             this.input3.TabIndex = 2;
             this.input3.Text = "0.5";
             this.input3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.input3.Click += new System.EventHandler(this.btn3_Click);
-            this.input3.TextChanged += new System.EventHandler(this.input3_TextChanged);
             // 
             // input4
             // 
@@ -120,8 +129,16 @@ namespace Sonas_Pictura
             this.input4.TabIndex = 1;
             this.input4.Text = "False";
             this.input4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.input4.Click += new System.EventHandler(this.btn4_Click);
-            this.input4.TextChanged += new System.EventHandler(this.input4_TextChanged);
+            // 
+            // text4
+            // 
+            this.text4.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.text4.Location = new System.Drawing.Point(6, 137);
+            this.text4.Name = "richTextBox1";
+            this.text4.ReadOnly = true;
+            this.text4.Size = new System.Drawing.Size(221, 20);
+            this.text4.TabIndex = 4;
+            this.text4.Text = "Include lines on Overlay radar (true or false)";
             // 
             // btn1
             // 
@@ -130,8 +147,8 @@ namespace Sonas_Pictura
             this.btn1.Size = new System.Drawing.Size(100, 20);
             this.btn1.TabIndex = 1;
             this.btn1.Text = "Save";
-            this.btn1.TextChanged += new System.EventHandler(this.input4_TextChanged);
-            this.btn1.Click += new System.EventHandler(this.btn4_Click);
+            this.btn1.Click += new System.EventHandler(this.btn1_Click);
+            
             // 
             // SettingsMenu
             // 
@@ -159,5 +176,7 @@ namespace Sonas_Pictura
         private System.Windows.Forms.TextBox input3;
         private System.Windows.Forms.TextBox input4;
         private System.Windows.Forms.Button btn1;
+        private RichTextBox text3;
+        private RichTextBox text4;
     }
 }
