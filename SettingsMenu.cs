@@ -13,7 +13,6 @@ namespace Sonas_Pictura
 {
     public partial class SettingsMenu : Form
     {
-        User u = new User();
         public SettingsMenu()
         {
             InitializeComponent();
@@ -21,14 +20,52 @@ namespace Sonas_Pictura
 
         private void btn1_Click(object sender, EventArgs e)
         {
-            u.radarSize = Int32.Parse(input1.Text);
-            u.radarCol = ColorTranslator.FromHtml(input2.Text);
-            u.opacity = Double.Parse(input3.Text);
-            u.RadarLines = bool.Parse(input4.Text);
+            bool error = false;
+            try
+            {
+                Properties.Settings.Default.radarSize = Int32.Parse(input1.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show( "Radar size entered incompatible, please enter an integer number (e.g 150)","Settings Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                error = true;
+            }
+            try
+            {
+                Properties.Settings.Default.radarCol = ColorTranslator.FromHtml(input2.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Radar Color entered incompatible, please enter a valid color name or Hex/RGB code (e.g Red or #FF0000)", "Settings Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                error = true;
+            }
+            try
+            {
+                Properties.Settings.Default.overlayOpacity = Double.Parse(input3.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Overlay Opacity entered entered incompatible, please enter a valid digit number (e.g 0.5)", "Settings Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                error = true;
+            }
 
-            Main main = new Main();
-            main.Show();
-            this.Close();
+            try
+            {
+                Properties.Settings.Default.radarLines = bool.Parse(input4.Text);
+            }
+            catch (Exception) { 
+                MessageBox.Show("Radar Lines choice entered entered incompatible, please enter a valid bool (e.g true or false)", "Settings Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                error = true;
+            }
+
+            Properties.Settings.Default.Save();
+
+            if (error == false) 
+            {
+                Main main = new Main();
+                main.Show();
+                this.Close();
+            }
         }
     }
 }

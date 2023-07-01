@@ -24,12 +24,11 @@ namespace Sonas_Pictura
         }
         private void Overlay_Load(object sender, EventArgs e)
         {
-            User u = new User();
             this.TransparencyKey = Color.White;
             this.BackColor = Color.White;
 
             this.WindowState = FormWindowState.Maximized;
-            this.Opacity = u.opacity;
+            this.Opacity = Properties.Settings.Default.overlayOpacity;
             Thread t = new Thread(AudioReader);
             t.Start();
         }
@@ -61,12 +60,12 @@ namespace Sonas_Pictura
         }
         public void RunOverlay(double l, double r, double fl, double fr, double bl, double br, double f)
         {
-            User u = new User();
-            Bitmap radar = new Bitmap(u.radarSize + 5, u.radarSize + 5);
-            SolidBrush radarBrush = new SolidBrush(u.radarCol);
-            int size75 = (int)(u.radarSize * 0.75);
-            int size50 = u.radarSize / 2;
-            int size25 = (int)(u.radarSize * 0.25);
+            var user = Properties.Settings.Default;
+            Bitmap radar = new Bitmap(user.radarSize + 5, user.radarSize + 5);
+            SolidBrush radarBrush = new SolidBrush(user.radarCol);
+            int size75 = (int)(user.radarSize * 0.75);
+            int size50 = user.radarSize / 2;
+            int size25 = (int)(user.radarSize * 0.25);
 
             Graphics frontLeft = Graphics.FromImage(radar);
             Graphics frontRight = Graphics.FromImage(radar);
@@ -88,7 +87,7 @@ namespace Sonas_Pictura
             // Right Indicator
             if (r >= 5)
             {
-                right.FillPolygon(radarBrush, new Point[] { new Point(u.radarSize, size25), new Point(size50, size50), new Point(u.radarSize, size75) });
+                right.FillPolygon(radarBrush, new Point[] { new Point(user.radarSize, size25), new Point(size50, size50), new Point(user.radarSize, size75) });
             }
             else
             {
@@ -108,7 +107,7 @@ namespace Sonas_Pictura
             // Front Right Indicator
             if (fr >= 5 | f >= 5)
             {
-                frontRight.FillPolygon(radarBrush, new Point[] { new Point(size50, 2), new Point(size50, size50), new Point(u.radarSize, size25) });
+                frontRight.FillPolygon(radarBrush, new Point[] { new Point(size50, 2), new Point(size50, size50), new Point(user.radarSize, size25) });
             }
             else
             {
@@ -118,7 +117,7 @@ namespace Sonas_Pictura
             // Back left Indicator
             if (bl >= 5)
             {
-                backLeft.FillPolygon(radarBrush, new Point[] { new Point(2, size75), new Point(size50, size50), new Point(size50, u.radarSize) });
+                backLeft.FillPolygon(radarBrush, new Point[] { new Point(2, size75), new Point(size50, size50), new Point(size50, user.radarSize) });
             }
             else
             {
@@ -128,7 +127,7 @@ namespace Sonas_Pictura
             // Back right Indicator
             if (br >= 5)
             {
-                backRight.FillPolygon(radarBrush, new Point[] { new Point(size50, u.radarSize), new Point(size50, size50), new Point(u.radarSize, size75) });
+                backRight.FillPolygon(radarBrush, new Point[] { new Point(size50, user.radarSize), new Point(size50, size50), new Point(user.radarSize, size75) });
             }
             else
             {
@@ -141,16 +140,16 @@ namespace Sonas_Pictura
         }
         public void DrawHexagon( Bitmap map)
         {
-            User u = new User();
-            int size75 = (int)(u.radarSize * 0.75);
-            int size50 = u.radarSize / 2;
-            int size25 = (int)(u.radarSize * 0.25);
+            var user = Properties.Settings.Default;
+            int size75 = (int)(user.radarSize * 0.75);
+            int size50 = user.radarSize / 2;
+            int size25 = (int)(user.radarSize * 0.25);
 
             Point[] hexPoints = new Point[7];
             hexPoints[0] = new Point(size50,3);
-            hexPoints[1] = new Point(u.radarSize, size25);
-            hexPoints[2] = new Point(u.radarSize, size75);
-            hexPoints[3] = new Point(size50, u.radarSize);
+            hexPoints[1] = new Point(user.radarSize, size25);
+            hexPoints[2] = new Point(user.radarSize, size75);
+            hexPoints[3] = new Point(size50, user.radarSize);
             hexPoints[4] = new Point(3, size75);
             hexPoints[5] = new Point(3, size25);
             hexPoints[6] = new Point(size50, 3);
@@ -158,12 +157,12 @@ namespace Sonas_Pictura
             Graphics hex = Graphics.FromImage(map);
             Pen pen = new Pen(Brushes.Black, 3);
             hex.DrawPolygon(pen, hexPoints);
-            bool x = u.RadarLines;
+            bool x = user.radarLines;
             if (x == true)
                     {
-                hex.DrawLine(pen, new Point(size50, 3), new Point(size50, u.radarSize));
-                hex.DrawLine(pen, new Point(3, size25), new Point(u.radarSize, size75));
-                hex.DrawLine(pen, new Point(u.radarSize, size25), new Point(3, size75)); 
+                hex.DrawLine(pen, new Point(size50, 3), new Point(size50, user.radarSize));
+                hex.DrawLine(pen, new Point(3, size25), new Point(user.radarSize, size75));
+                hex.DrawLine(pen, new Point(user.radarSize, size25), new Point(3, size75)); 
             }
 
         }

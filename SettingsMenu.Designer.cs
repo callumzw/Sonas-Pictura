@@ -62,16 +62,7 @@ namespace Sonas_Pictura
             this.groupBox.Size = new System.Drawing.Size(383, 250);
             this.groupBox.TabIndex = 0;
             this.groupBox.TabStop = false;
-            // 
-            // text3
-            // 
-            this.text3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.text3.Location = new System.Drawing.Point(6, 95);
-            this.text3.Name = "text3";
-            this.text3.ReadOnly = true;
-            this.text3.Size = new System.Drawing.Size(221, 20);
-            this.text3.TabIndex = 3;
-            this.text3.Text = "Opacity of Overlay (in percentage)";
+            
             // 
             // input1
             // 
@@ -79,7 +70,7 @@ namespace Sonas_Pictura
             this.input1.Name = "input1";
             this.input1.Size = new System.Drawing.Size(100, 20);
             this.input1.TabIndex = 0;
-            this.input1.Text = "150";
+            this.input1.Text = Properties.Settings.Default.radarSize.ToString();
             this.input1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.input1.Click += new System.EventHandler(this.btn1_Click);
             // 
@@ -99,7 +90,7 @@ namespace Sonas_Pictura
             this.input2.Name = "input2";
             this.input2.Size = new System.Drawing.Size(100, 20);
             this.input2.TabIndex = 1;
-            this.input2.Text = "Red";
+            this.input2.Text = Properties.Settings.Default.radarCol.Name;
             this.input2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // text2
@@ -118,8 +109,18 @@ namespace Sonas_Pictura
             this.input3.Name = "input3";
             this.input3.Size = new System.Drawing.Size(100, 20);
             this.input3.TabIndex = 2;
-            this.input3.Text = "0.5";
+            this.input3.Text = Properties.Settings.Default.overlayOpacity.ToString();
             this.input3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // text3
+            // 
+            this.text3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.text3.Location = new System.Drawing.Point(6, 95);
+            this.text3.Name = "text3";
+            this.text3.ReadOnly = true;
+            this.text3.Size = new System.Drawing.Size(221, 20);
+            this.text3.TabIndex = 3;
+            this.text3.Text = "Opacity of Overlay (in percentage)";
             // 
             // input4
             // 
@@ -127,7 +128,7 @@ namespace Sonas_Pictura
             this.input4.Name = "input4";
             this.input4.Size = new System.Drawing.Size(100, 20);
             this.input4.TabIndex = 1;
-            this.input4.Text = "False";
+            this.input4.Text = Properties.Settings.Default.radarLines.ToString();
             this.input4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // text4
