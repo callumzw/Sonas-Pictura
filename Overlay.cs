@@ -20,7 +20,7 @@ namespace Sonas_Pictura
         MMDevice device;
         public Overlay()
         {
-            InitializeComponent();
+            InitializeComponent(Properties.Settings.Default.radarSize) ;
         }
         private void Overlay_Load(object sender, EventArgs e)
         {
@@ -167,6 +167,5 @@ namespace Sonas_Pictura
 
         }
 
-
-        }
+    }
 }

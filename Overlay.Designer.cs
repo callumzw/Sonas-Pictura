@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace Sonas_Pictura
 {
@@ -21,16 +22,14 @@ namespace Sonas_Pictura
             }
             base.Dispose(disposing);
         }
-
         #region Windows Form Designer generated code
 
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        private void InitializeComponent( int x)
         {
-            var user = Properties.Settings.Default;
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -38,24 +37,24 @@ namespace Sonas_Pictura
             // pictureBox1
             // 
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Location = new System.Drawing.Point(960 - (user.radarSize /2 ), 810 - (user.radarSize / 2));
-            this.pictureBox1.Size = new System.Drawing.Size(user.radarSize + 5, user.radarSize + 5);;
+            this.pictureBox1.Location = new System.Drawing.Point(960 - (x / 2), 810 - (x / 2));
+            this.pictureBox1.Size = new System.Drawing.Size(x + 5, x + 5);;
             // 
             // Overlay
             // 
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.ClientSize = new System.Drawing.Size(user.radarSize + 5, user.radarSize + 5);
+            this.ClientSize = new System.Drawing.Size(x + 5, x + 5);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle =FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Overlay";
-            this.ShowInTaskbar = false;
             this.Text = "Sonus Overlay";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Overlay_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+
 
         }
 
