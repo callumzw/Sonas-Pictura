@@ -21,6 +21,8 @@ namespace Sonas_Pictura
         public Overlay()
         {
             InitializeComponent(Properties.Settings.Default.radarSize) ;
+            Bitmap bitmp = Properties.Resources.Sonas_Logo;
+            this.Icon = Icon.FromHandle(bitmp.GetHicon());
         }
         private void Overlay_Load(object sender, EventArgs e)
         {

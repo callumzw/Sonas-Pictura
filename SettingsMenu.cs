@@ -16,6 +16,8 @@ namespace Sonas_Pictura
         public SettingsMenu()
         {
             InitializeComponent();
+            Bitmap bitmp = Properties.Resources.Sonas_Logo;
+            this.Icon = Icon.FromHandle(bitmp.GetHicon());
         }
 
         private void btn1_Click(object sender, EventArgs e)
@@ -67,5 +69,12 @@ namespace Sonas_Pictura
                 this.Close();
             }
         }
+
+        private void SettingsMenu_Closed(object sender, EventArgs e)
+        {
+            this.Close();
+
+        }
+
     }
 }
