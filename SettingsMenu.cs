@@ -70,11 +70,5 @@ namespace Sonas_Pictura
             }
         }
 
-        private void SettingsMenu_Closed(object sender, EventArgs e)
-        {
-            this.Close();
-
-        }
-
     }
 }

@@ -72,7 +72,6 @@ namespace Sonas_Pictura
             this.input1.TabIndex = 0;
             this.input1.Text = Properties.Settings.Default.radarSize.ToString();
             this.input1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.input1.Click += new System.EventHandler(this.btn1_Click);
             // 
             // text1
             // 
